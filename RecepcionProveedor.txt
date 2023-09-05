@@ -1,0 +1,258 @@
+<%@ Page Title="" Language="C#" MasterPageFile="~/Common/AGP.Master" AutoEventWireup="true" CodeBehind="RecepcionProveedor.aspx.cs" Inherits="ITWORK_SCA.OperacionIframe.RecepcionProveedor" MaintainScrollPositionOnPostback="true" %>
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="asp" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+
+  <script type="text/javascript">
+      $(document).ready(function () {
+          $(".various").fancybox({
+              maxWidth: 800,
+              maxHeight: 600,
+              fitToView: false,
+              width: '70%',
+              height: '70%',
+              autoSize: false,
+              closeClick: false,
+              openEffect: 'none',
+              closeEffect: 'none'
+          });
+      });
+
+    </script>
+    
+
+<asp:Label ID="Label10" runat="server" ForeColor="Blue" Visible="False"></asp:Label>
+<header class="page-header">
+            <div class="container-fluid">
+              <h2 class="no-margin-bottom">Recibir Proveedor</h2>
+            </div>
+          </header>
+
+    <!-- Breadcrumb-->
+      <div class="breadcrumb-holder">
+        <div class="container-fluid">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item">Menú</li>
+            <li class="breadcrumb-item">Gestiòn </li>
+              <li class="breadcrumb-item active">Recibir Proveedor</li>
+          </ul>
+        </div>
+      </div>
+
+    <section>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="form-group">
+                                <ion-icon name="document-text"></ion-icon>
+                                <asp:Label ID="Label1" runat="server" CssClass="titulo_formulario" Text="Seleccione guia"></asp:Label>
+                                <div class="input-group">
+                                    <asp:DropDownList ID="cboGuias" runat="server" AutoPostBack="true" CssClass="form-control ifco-form-control dropStryle">
+                                    </asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 text-center  ">
+                                <div class="form-group">
+                                    <ion-icon name="globe-outline"></ion-icon>
+                                    <asp:Label ID="Label2" runat="server" CssClass="titulo_formulario" Text="Local Receptor"></asp:Label><br />
+                                    <asp:Label ID="Label3" runat="server" CssClass="titulo_sub_formulario "></asp:Label>
+                                </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 text-center">
+                                <div class="form-group">
+                                    <ion-icon name="id-card-outline"></ion-icon>
+                                    <asp:Label ID="Label11" runat="server" CssClass="titulo_formulario" Text="Nombre Local"></asp:Label><br />
+                                    <asp:Label ID="Label12" runat="server" CssClass=" titulo_sub_formulario" Text=""></asp:Label>
+                                </div>
+                        </div>
+
+                    <div id="hr_superior_segundo_primero" runat="server" class="col-lg-12 col-md-12">
+                        <hr style="border:groove;" />
+                    </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="form-group">
+                                <ion-icon name="person"></ion-icon>
+                                <asp:Label ID="Label4" runat="server" CssClass="titulo_formulario" Text="Rut Proveedor"></asp:Label>
+                                <div class="input-group">
+                                    <asp:TextBox ID="txt_RutProveedor" runat="server" CssClass="form-control ifco-form-control" placeholder="xxxxx111" onKeyPress="return soloNumeros(event)"
+                                    AutoPostBack="true" ontextchanged="txt_RutProveedor_TextChanged"
+                                    MaxLength="8"></asp:TextBox>-
+                                    <asp:TextBox ID="txt_nombreProveedor" runat="server" Width="21px" Enabled="false" placeholder="X" MaxLength="1"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="form-group">
+                                <ion-icon name="car"></ion-icon>
+                                <asp:Label ID="Label14" runat="server" CssClass="titulo_formulario" Text="Patente Tr."></asp:Label>
+                                <div class="input-group">
+                                    <asp:TextBox ID="txt_Patente" runat="server" MaxLength="6" CssClass="form-control  ifco-form-control" placeholder="XXXX99"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <div class="form-group">
+                                <ion-icon name="card"></ion-icon>
+                                <asp:Label ID="Label13" runat="server" CssClass="titulo_formulario" Text="Rut Transportista"></asp:Label>
+                                <div class="input-group">
+                                    <asp:TextBox ID="txt_RutTransportista" runat="server" CssClass="form-control ifco-form-control" placeholder="xxxxx111" onKeyPress="return soloNumeros(event)"
+                                        AutoPostBack="true" ontextchanged="txt_RutTransportista_TextChanged"
+                                        MaxLength="8"></asp:TextBox>-
+                                    <asp:TextBox ID="txt_DvTransportista" runat="server" Width="21px" Enabled="false" placeholder="X" MaxLength="1"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+               <tr> 
+                   <td>
+                
+              <asp:Table ID="Table1" runat="server" Visible="false">
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:Label ID="lblnt" runat="server" Text="Nombres" style=" font-size:10px;"></asp:Label>
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="lblap" runat="server" Text="Ap. Paterno" style=" font-size:10px;"></asp:Label>                 
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:Label ID="lblam" runat="server" Text="Ap. Materno" style=" font-size:10px;"></asp:Label>                 
+                        </asp:TableCell>
+                        <asp:TableCell RowSpan="2" VerticalAlign="Bottom">
+                            <asp:Button ID="btnAgregaTrans" runat="server" Text="Agrergar" onclick="btnAgregaTrans_Click" style="font-size:9px;" /> 
+                            &nbsp;
+                             <asp:Button ID="btnCancelaTrans" runat="server" Text="Cancelar" onclick="btnCancelaTrans_Click" style="font-size:9px;"/>
+                        </asp:TableCell>
+                    </asp:TableRow>
+                    <asp:TableRow>
+                        <asp:TableCell>
+                            <asp:TextBox ID="txt_nombreTransportista" runat="server" Width="100px"></asp:TextBox>  
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:TextBox ID="txt_apellidoP" runat="server" Width="100px"></asp:TextBox>             
+                        </asp:TableCell>
+                        <asp:TableCell>
+                            <asp:TextBox ID="txt_apellidoM" runat="server" Width="100px"></asp:TextBox>             
+                        </asp:TableCell>
+                    </asp:TableRow>                                  
+                    </asp:Table>
+               
+                    <asp:Label ID="lbl_nombreTransportista" runat="server" Visible="true"></asp:Label>  
+              
+            </td>
+        </tr>
+
+
+                        
+                        
+                        <div class="col-12 col-md-4">
+                            <label class="mt-1"></label>
+                            <div class="form-group" align="center">
+                                <asp:Button ID="btnAgregar" runat="server" Text="Agregar" OnClick="btnAgregar_Click" CssClass="btn  btn-color-principal " />
+                            </div>
+                        </div>
+
+                    <div id="Div1" runat="server" class="col-lg-12 col-md-12">
+                        <hr style="border:groove;" />
+                    </div>
+
+
+
+
+
+
+        <tr>
+            <td colspan="4" align="center">
+                <asp:GridView ID="grdResultado" runat="server" AllowPaging="False"  AutoGenerateColumns="False" Width="100%"  
+                AllowSorting="True" EnableModelValidation="True" DataKeyNames="ID" CssClass="table" >
+                <EmptyDataTemplate>
+                    <table>
+                        <tr align="center">
+                            <td class="ms-input">
+                                No existen registros.
+                            </td>
+                        </tr>
+                    </table>
+                </EmptyDataTemplate>
+                <Columns>      
+                    <asp:BoundField DataField="Envases" HeaderText="Envases"  />
+                    <asp:BoundField DataField="CantEnvases" HeaderText="Cantidad"/>             
+                    <asp:TemplateField HeaderText="ID" Visible="true">
+                        <ItemTemplate>
+                            <asp:Label ID="lblID" runat="server" Text='<%# Bind("ID") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                </Columns>
+            </asp:GridView>
+            </td>
+        </tr>
+        
+                        <div class="col-12 col-md-3">
+                            <div class="form-group">
+                                <asp:Label ID="Label5" runat="server" CssClass="titulo_formulario" Text="Activos"></asp:Label>
+                                <div class="input-group">
+                                    <asp:DropDownList ID="cboProducto" runat="server" CssClass="form-control  ifco-form-control" ></asp:DropDownList>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-3">
+                            <div class="form-group">
+                                <asp:Label ID="Label7" runat="server" CssClass="titulo_formulario" Text="Cantidad"></asp:Label>
+                                <div class="input-group">
+                                    <asp:TextBox ID="txt_cantidad" runat="server" CssClass="form-control  ifco-form-control" onKeyPress="return soloNumeros(event)"></asp:TextBox>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-3">
+                            <label class="mt-1"></label>
+                            <div class="form-group" align="center">
+                                <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" OnClick="btnCancelar_Click" CssClass="btn  btn-S-color-principal" />
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-3">
+                            <label class="mt-1"></label>
+                            <div class="form-group" align="center">
+                                <asp:Button ID="btnGrabar" runat="server" Text="Grabar" OnClick="btnGrabar_Click" Enabled="false" CssClass="btn  btn-color-principal"
+                                    OnClientClick="this.disabled=true;this.value='Enviando...';__doPostBack(this.name,'');"/>
+                            </div>
+                        </div>
+
+
+        <tr>
+            <td colspan="4" align="center">
+
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                
+                <asp:HyperLink ID="crystal" runat="server" Font-Size="Medium" CssClass="various" data-fancybox-type="iframe">HyperLink</asp:HyperLink>           
+            </td>
+        </tr>
+
+   </div>
+  </div>
+            </div>
+          </div>
+        </section>
+<asp:Label ID="lblError" runat="server" Text="" ForeColor="Red"></asp:Label>
+
+</asp:Content>
