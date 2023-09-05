@@ -1,1 +1,10 @@
-Hola Mundo.
+var contentSize = await chromeBrowser.GetContentSizeAsync();
+                                var viewPort = new CefSharp.DevTools.Page.Viewport
+                                {
+                                    Width = contentSize.Width,
+                                    Height = contentSize.Height
+                                };
+
+                                var data = await chromeBrowser.CaptureScreenshotAsync(viewPort: viewPort, captureBeyondViewport: true);
+                                var screenshotPath = @"C:\Users\Axel Sequeida\Desktop\PROYECTOS\AUTOGES\PROFIN SA\2.0\WEB\Digitalizacion\docs\docs\ERROR_COMPRA_CERTIFICADOS\" + DateTime.Now.Ticks + ".jpg";
+                                File.WriteAllBytes(screenshotPath, data);
