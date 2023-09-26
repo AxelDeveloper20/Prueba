@@ -275,7 +275,7 @@ namespace CACCESO
         }
 
 
-        public string add_TipogastoCliente(Int16 id_tipogasto, Int16 id_cliente, string cargo_servicio, string tipo_servicio)
+        public string add_TipogastoCliente(Int16 id_tipogasto, Int16 id_cliente, string cargo_servicio, string tipo_servicio, Boolean facturable)
         {
             using (SqlConnection sqlConn = new SqlConnection(this.strConn))
             {
@@ -286,7 +286,8 @@ namespace CACCESO
                     oParam = Cmd.Parameters.AddWithValue("@id_cliente", id_cliente);
                     oParam = Cmd.Parameters.AddWithValue("@valor", cargo_servicio);
                     oParam = Cmd.Parameters.AddWithValue("@codigo", tipo_servicio);
-                    Cmd.ExecuteNonQuery();
+                    oParam = Cmd.Parameters.AddWithValue("@Facturable", facturable);
+                Cmd.ExecuteNonQuery();
                     Cmd.ExecuteNonQuery();
                     sqlConn.Close();
             }

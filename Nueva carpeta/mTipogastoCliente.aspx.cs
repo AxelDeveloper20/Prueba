@@ -124,8 +124,10 @@ namespace sistemaEXTERNO
                 {
                     row = gr_dato.Rows[i];
                     Int16 id_tipogasto = Convert.ToInt16(this.gr_dato.Rows[i].Cells[0].Text);
-                    string dl_cargo_aux = this.gr_dato.Rows[i].Cells[2].Text;
+                    TextBox dl_cargo_aux = (TextBox)gr_dato.Rows[i].FindControl("txt_costo");
+                    string costo = dl_cargo_aux.Text;
                     CheckBox chk_sel = (CheckBox)gr_dato.Rows[i].FindControl("chk");
+                    CheckBox chk_factura = (CheckBox)gr_dato.Rows[i].FindControl("chk_factura");
 
                     if (chk_sel.Checked)
                     {
@@ -134,8 +136,8 @@ namespace sistemaEXTERNO
                         //    row.BackColor = System.Drawing.Color.IndianRed;
                         //    cuenta_existentes = cuenta_existentes + 1;
                         //}
-                        string add = new TipogastoBC().add_TipogastoCliente(id_tipogasto, id_cliente, dl_cargo_aux.Trim(),
-                                                            Codigo_Servicio);
+                        string add = new TipogastoBC().add_TipogastoCliente(id_tipogasto, id_cliente, costo.Trim(),
+                                                            Codigo_Servicio, chk_factura.Checked);
                         if (add == "")
                         {
                             scriptsResult = string.Format("MsjSuccess('Exito', 'Se han guardado con exito las operaciones seleccionadas.');");
